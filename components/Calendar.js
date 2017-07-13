@@ -31,6 +31,7 @@ export default class Calendar extends Component {
   };
 
   static propTypes = {
+    topBar: PropTypes.bool,
     currentMonth: PropTypes.any,
     customStyle: PropTypes.object,
     dayHeadings: PropTypes.array,
@@ -63,6 +64,7 @@ export default class Calendar extends Component {
   };
 
   static defaultProps = {
+    topBar: true,
     customStyle: {},
     width: DEVICE_WIDTH,
     dayHeadings: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -362,7 +364,7 @@ export default class Calendar extends Component {
 
     return (
       <View style={[styles.calendarContainer, this.props.customStyle.calendarContainer]}>
-        {this.renderTopBar()}
+        {this.props.topBar ? this.renderTopBar() : undefined }
         {this.renderHeading(this.props.titleFormat)}
         {this.props.scrollEnabled ?
           <ScrollView
