@@ -1,5 +1,11 @@
 ## react-native-calendar
 
+Customzied fork, diff against upstream:
+
+- Introduce topBar prop - pass false to don't render month name row
+- Don't render top border for first week row
+- Don't overlap touch opacity with row border lines
+
 A `<Calendar>` component for React Native
 
 Portrait mode only

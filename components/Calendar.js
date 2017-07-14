@@ -255,7 +255,8 @@ export default class Calendar extends Component {
             event: eventsMap[thisMoment.format('YYYY-MM-DD')] ||
                    eventsMap[thisMoment.format('YYYYMMDD')],
             showEventIndicators: this.props.showEventIndicators,
-            customStyle: this.props.customStyle
+            customStyle: this.props.customStyle,
+            isFirstWeek: weekRows.length === 0,
           })
         ));
       } else {
