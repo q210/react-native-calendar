@@ -100,21 +100,22 @@ export default class Day extends Component {
       )
     : (
         <View style={isFirstWeek ? null : customStyle.dayButtonContainer}>
-          <TouchableOpacity onPress={this.props.onPress}>
-            <View style={this.dayStyle(isWeekend, isSelected, isToday, isFirstWeek, event)}>
-              <View style={this.dayCircleStyle(isWeekend, isSelected, isToday, event)}>
-                <Text style={this.dayTextStyle(isWeekend, isSelected, isToday, event)}>{caption}</Text>
-              </View>
-              {showEventIndicators &&
-                <View style={[
-                  styles.eventIndicatorFiller,
-                  customStyle.eventIndicatorFiller,
-                  event && styles.eventIndicator,
-                  event && customStyle.eventIndicator,
-                  event && event.eventIndicator]}
-                />
-              }
+          <TouchableOpacity
+            onPress={this.props.onPress}
+            style={this.dayStyle(isWeekend, isSelected, isToday, isFirstWeek, event)}
+          >
+            <View style={this.dayCircleStyle(isWeekend, isSelected, isToday, event)}>
+              <Text style={this.dayTextStyle(isWeekend, isSelected, isToday, event)}>{caption}</Text>
             </View>
+            {showEventIndicators &&
+              <View style={[
+                styles.eventIndicatorFiller,
+                customStyle.eventIndicatorFiller,
+                event && styles.eventIndicator,
+                event && customStyle.eventIndicator,
+                event && event.eventIndicator]}
+              />
+            }
           </TouchableOpacity>
         </View>
     );
