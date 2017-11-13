@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   },
   dayButton: {
     alignItems: 'center',
-    padding: 5,
     width: DEVICE_WIDTH / 7,
     borderTopWidth: 1,
     borderTopColor: '#e9e9e9',
@@ -66,7 +65,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   eventIndicatorFiller: {
-    marginTop: 3,
     borderColor: 'transparent',
     width: 4,
     height: 4,
@@ -78,9 +76,9 @@ const styles = StyleSheet.create({
   dayCircleFiller: {
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 27,
+    height: 27,
+    borderRadius: 13,
   },
   currentDayCircle: {
     backgroundColor: 'red',
