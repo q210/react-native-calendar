@@ -72,6 +72,7 @@ export default class Day extends Component {
     let dayButtonStyle = [styles.dayButton, customStyle.dayButton];
 
     if (isWeekNumber) {
+      // day in week number column
       dayButtonStyle = [styles.weekNumberButton, customStyle.weekNumberButton];
     } else if (isWeekend) {
       dayButtonStyle.push(styles.weekendDayButton, customStyle.weekendDayButton);

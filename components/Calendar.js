@@ -258,6 +258,7 @@ export default class Calendar extends Component {
             showEventIndicators: this.props.showEventIndicators,
             customStyle: this.props.customStyle,
             isFirstWeek: weekRows.length === 0,
+            // day is not in weekNumber column
             isWeekNumber: false,
           })
         ));
@@ -288,6 +289,7 @@ export default class Calendar extends Component {
                               showEventIndicators: false,
                               customStyle: this.props.customStyle,
                               isFirstWeek: weekRows.length === 0,
+                              // day is week number
                               isWeekNumber: true,
                             })}
             {days}
@@ -322,7 +324,7 @@ export default class Calendar extends Component {
       if (j === 0 || j === 7) {
         dayHeaderStyle = [styles.weekendHeading, this.props.customStyle.weekendHeading]
       } else if (j === 1) {
-        // weekNumber
+        // in weekNumber column
         dayHeaderStyle = [styles.weekNumberHeading, this.props.customStyle.weekNumberHeading]
       }
 
