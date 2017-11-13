@@ -258,6 +258,8 @@ export default class Calendar extends Component {
             showEventIndicators: this.props.showEventIndicators,
             customStyle: this.props.customStyle,
             isFirstWeek: weekRows.length === 0,
+            // day is not in weekNumber column
+            isWeekNumber: false,
           })
         ));
       } else {
@@ -269,6 +271,7 @@ export default class Calendar extends Component {
           })
         );
       }
+
       if (renderIndex % 7 === 6) {
         weekRows.push(
           <View
@@ -276,6 +279,19 @@ export default class Calendar extends Component {
              onLayout={weekRows.length ? undefined : this.onWeekRowLayout}
              style={[styles.weekRow, this.props.customStyle.weekRow]}
              >
+              {this.renderDay({
+                              startOfMonth: startOfArgMoment,
+                              key: thisMoment,
+                              onPress: () => {},
+                              caption: thisMoment.week(),
+                              isToday: false,
+                              isSelected: false,
+                              showEventIndicators: false,
+                              customStyle: this.props.customStyle,
+                              isFirstWeek: weekRows.length === 0,
+                              // day is week number
+                              isWeekNumber: true,
+                            })}
             {days}
           </View>);
         days = [];
@@ -285,6 +301,7 @@ export default class Calendar extends Component {
       }
       renderIndex += 1;
     } while (true)
+
     const containerStyle = [styles.monthContainer, this.props.customStyle.monthContainer];
     return <View key={`${startOfArgMoment.format('YYYY-MM-DD')}-${calFormat}`} style={containerStyle}>{weekRows}</View>;
   }
@@ -300,14 +317,21 @@ export default class Calendar extends Component {
     let headings = [];
     let i = 0;
 
-    for (i; i < 7; ++i) {
-      const j = (i + this.props.weekStart) % 7;
+    for (i; i < 8; ++i) {
+      const j = (i + this.props.weekStart) % 8;
+      let dayHeaderStyle = [styles.dayHeading, this.props.customStyle.dayHeading]
+
+      if (j === 0 || j === 7) {
+        dayHeaderStyle = [styles.weekendHeading, this.props.customStyle.weekendHeading]
+      } else if (j === 1) {
+        // in weekNumber column
+        dayHeaderStyle = [styles.weekNumberHeading, this.props.customStyle.weekNumberHeading]
+      }
+
       headings.push(
         <Text
            key={i}
-           style={j === 0 || j === 6 ?
-                  [styles.weekendHeading, this.props.customStyle.weekendHeading] :
-           [styles.dayHeading, this.props.customStyle.dayHeading]}
+           style={dayHeaderStyle}
            >
           {this.props.dayHeadings[j]}
         </Text>
